@@ -25,16 +25,30 @@ The purpose of this project is to explore how **SIEM detections, automation, thr
 
 ```
 Splunk Alert
-   ↓
-Webhook
-   ↓
-n8n Workflow
-   ├── OpenAI (SOC Incident Analysis)
-   ├── AbuseIPDB (IP Reputation Enrichment)
-   └── Slack (SOC Alert Notification)
+↓
+Webhook (n8n Trigger)
+↓
+OpenAI (SOC Incident Analysis Engine)
+   └── AbuseIPDB API (IP Reputation Enrichment)
+↓
+Slack (SOC Alert Notification)
 ```
 <img width="1114" height="469" alt="image" src="https://github.com/user-attachments/assets/f214c35a-9f35-4b17-81e1-93735773e09a" />
 
+```
+Detection Layer:
+- Splunk Alert
+
+Ingestion Layer:
+- n8n Webhook
+
+Decision Layer (AI Agent):
+- OpenAI
+   └── Tool: AbuseIPDB
+
+Action Layer:
+- Slack Notification
+```
 ---
 
 ## 🔍 Detection Logic (Splunk)
